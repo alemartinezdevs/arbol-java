@@ -160,6 +160,10 @@ public class arbolBinario {
             do{
 
                 try{
+                    System.out.print("");
+                    System.out.print("------------------------------------------------------------------------------------------");
+                    System.out.print("");
+
                     System.out.println("\n\t\t<> OPCIONES <>");
                     System.out.println("\n1. Agregar Arbol completo");
                     System.out.println("2. Mostrar Arbol completo");
@@ -172,7 +176,7 @@ public class arbolBinario {
                     option = scanner.nextInt();
 
                 } catch (Exception e) {
-                    System.out.println("\nDebes de ingresar un numero");
+                    System.out.println("\nError! Ingresa un numero.");
                     scanner.nextLine();
                     option = 0;
                     continue;
@@ -180,7 +184,8 @@ public class arbolBinario {
 
                 switch (option) {
                     case 1:
-                        System.out.print("\nIngrese la cantidad de numero que agregara al Arbol binario: ");
+                        System.out.println("\nCuantos datos desea agregar al arbol? ");
+                        System.out.print("Respuesta:");
                         int recorrido = scanner.nextInt();
                         int []datos = new int[recorrido];
 
@@ -200,7 +205,8 @@ public class arbolBinario {
                         arbol.inorden();
                         System.out.println("");
                         }else{
-                            System.out.println("\nEl arbol esta vacio.");
+                            System.out.println("\nError!");
+                            System.out.println("El arbol esta vacio.");
                             System.out.println("");
                         }
                         break;
@@ -209,99 +215,114 @@ public class arbolBinario {
 
                         int valor;
                         do{
-                            System.out.print("\nIngrese el valor del nodo a insertar: ");
+                            System.out.print("\nDigita el valor que desea agregar al arbol: ");
                             valor = scanner.nextInt();
                             if(arbol.existe(valor)){
-                                System.out.println("\nEl valor ya existe en el nodo");
+                                System.out.println("\nError!");
+                                System.out.println("El valor ya existe en el arbol");
                             }
                         }while(arbol.existe(valor));
                         arbol.insertar(valor);
-                        System.out.println("\nValor insertado");
+                        System.out.println("\nValor agregado exitosamente!!!");
                         break;
+
                     case 4:
+
+                        if (arbol.raiz == null){
+                            System.out.println("\nError!");
+                            System.out.println("No puede eliminar ningun valor porque el arbol esta vacio.");
+                        }else{
                         int valorelim;
                         while(true){
-                            System.out.println("\n- ELIMINAR NODO DEL ARBOL -");
-                            System.out.print("\nIngresa el valor del Nodo a Eliminar: ");
+                            System.out.print("\nIngresa el valor que deseas eliminar: ");
                             valorelim = scanner.nextInt();
                             if(arbol.buscar(valorelim)){
                                 arbol.eliminar(valorelim);
-                                System.out.println("\nValor Eliminado");
+                                System.out.println("\nEl valor fue eliminado exitosamente!!!");
                                 break;
                             }
                             else{
-                                System.out.println("\nValor no encotrado. Intentenlo nuevamente");
+                                System.out.println("\nError!");
+                                System.out.println("El valor no fue encontrado.");
                             }
                         }
+                        }
+
                         break;
 
                     case 5:
-                        int optionre;
-                        do{
-                            try {
-                                System.out.println("\n\t<> Elija una opcion para recorrer el arbol <>");
-                                System.out.println("\n1. Inorden");
-                                System.out.println("2. Preorden");
-                                System.out.println("3. PostOrden");
-                                System.out.println("4. Volver al menu principal");
-                                System.out.print("Ingresa una opcion: ");
-                                optionre = scanner.nextInt();
+                        if (arbol.raiz == null){
+                            System.out.println("\nError!");
+                            System.out.println("No se puede iniciar un recorrido porque el arbol esta vacio");
+                        }else {
+                            int optionre;
+                            do {
+                                try {
+                                    System.out.println("\n\t<> Elija una opcion para recorrer el arbol <>");
+                                    System.out.println("\n1. Inorden");
+                                    System.out.println("2. Preorden");
+                                    System.out.println("3. PostOrden");
+                                    System.out.println("4. Volver al menu principal");
+                                    System.out.print("Ingresa una opcion: ");
+                                    optionre = scanner.nextInt();
 
-                            } catch (Exception e) {
-                                System.out.println("\nIngrese una opcion Valida..");
-                                scanner.nextLine();
-                                optionre = 0;
-                                continue;
-                            }
+                                } catch (Exception e) {
+                                    System.out.println("\nIngrese una opcion Valida..");
+                                    scanner.nextLine();
+                                    optionre = 0;
+                                    continue;
+                                }
 
-                            switch (optionre) {
+                                switch (optionre) {
 
-                                case 1:
-                                    System.out.println("\nRecorrido InOrden");
-                                    if (arbol.raiz != null){
-                                    arbol.inorden();
-                                    System.out.println("");
-                                    }else{
-                                        System.out.println("El arbol esta vacio.");
-                                    }
+                                    case 1:
+                                        System.out.println("\nRecorrido InOrden");
+                                        if (arbol.raiz != null) {
+                                            arbol.inorden();
+                                            System.out.println("");
+                                        } else {
+                                            System.out.println("\nError!");
+                                            System.out.println("El arbol esta vacio.");
+                                        }
 
-                                    break;
+                                        break;
 
-                                case 2:
-                                    System.out.println("\nRecorrido Preorden");
-                                    if (arbol.raiz != null){
-                                        arbol.preorden();
-                                        System.out.println("");
-                                    }else{
-                                        System.out.println("El arbol esta vacio.");
-                                    }
-                                    break;
+                                    case 2:
+                                        System.out.println("\nRecorrido Preorden");
+                                        if (arbol.raiz != null) {
+                                            arbol.preorden();
+                                            System.out.println("");
+                                        } else {
+                                            System.out.println("\nError!");
+                                            System.out.println("El arbol esta vacio.");
+                                        }
+                                        break;
 
-                                case 3:
-                                    System.out.println("\nRecorrido PostOrden");
-                                    if (arbol.raiz != null){
-                                        arbol.postorden();
-                                        System.out.println("");
-                                    }else{
-                                        System.out.println("El arbol esta vacio.");
-                                    }
-                                    break;
+                                    case 3:
+                                        System.out.println("\nRecorrido PostOrden");
+                                        if (arbol.raiz != null) {
+                                            arbol.postorden();
+                                            System.out.println("");
+                                        } else {
+                                            System.out.println("\nError!");
+                                            System.out.println("El arbol esta vacio.");
+                                        }
+                                        break;
 
-                                case 4:
-                                    System.out.println("\nVolviendo al Menu Principal..");
-                                    break;
+                                    case 4:
+                                        System.out.println("\nRegresando al menu!");
+                                        break;
 
-                                default:
-                                    System.out.println("\nOpcion invalida.....");
-                                    break;
-                            }
-                        }while (optionre != 4);
+                                    default:
+                                        System.out.println("\nOpcion invalida.....");
+                                        break;
+                                }
+                            } while (optionre != 4);
+                        }
                         break;
 
-
                     case 6:
-                        System.out.println("\n- NODO BUSCAR ESPECIFICO -");
-                        System.out.print("\nIngresa el valor del Nodo a bucar: ");
+                        System.out.print("\nIngresa el valor que busca: ");
                         int valorbus = scanner.nextInt();
                         if(arbol.buscar(valorbus)){
                             System.out.println("\nValor encontrado");
@@ -318,10 +339,6 @@ public class arbolBinario {
                         System.out.println(" Intenta de nuevo...");
                         break;
                 }
-
-
-
-
             }while(option != 7);
             scanner.close();
 
