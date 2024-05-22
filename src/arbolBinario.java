@@ -143,12 +143,12 @@ public class arbolBinario {
             return raiz;
         }
         private int minValor(Nodo raiz){
-            int minva = raiz.valor;
+            int minValue = raiz.valor;
             while(raiz.izquierdo != null){
-                minva = raiz.izquierdo.valor;
+                minValue = raiz.izquierdo.valor;
                 raiz = raiz.izquierdo;
             }
-            return minva;
+            return minValue;
         }
 
         // Método principal para probar el funcionamiento del árbol
@@ -184,13 +184,14 @@ public class arbolBinario {
 
                 switch (option) {
                     case 1:
+                        //Agregando un arbol completo 
                         System.out.println("\nCuantos datos desea agregar al arbol? ");
                         System.out.print("Respuesta:");
                         int recorrido = scanner.nextInt();
                         int []datos = new int[recorrido];
 
                         for (int i = 0; i< recorrido; i++){
-                            System.out.print("\nIngrese el numero en la posicion " + (i+1) + ": ");
+                            System.out.print("\nIngrese el número en la posicion " + (i+1) + ": ");
                             datos[i] = scanner.nextInt();
                         }
                         for (int dato : datos){
@@ -212,7 +213,7 @@ public class arbolBinario {
                         break;
 
                     case 3:
-
+                        //Ingresando un valor al arbol
                         int valor;
                         do{
                             System.out.print("\nDigita el valor que desea agregar al arbol: ");
@@ -227,7 +228,7 @@ public class arbolBinario {
                         break;
 
                     case 4:
-
+                        //Eliminando un valor del arbol
                         if (arbol.raiz == null){
                             System.out.println("\nError!");
                             System.out.println("No puede eliminar ningun valor porque el arbol esta vacio.");
@@ -251,13 +252,14 @@ public class arbolBinario {
                         break;
 
                     case 5:
+                        //Mostrando el los valores del arbol
                         if (arbol.raiz == null){
                             System.out.println("\nError!");
                             System.out.println("No se puede iniciar un recorrido porque el arbol esta vacio");
                         }else {
                             int optionre;
                             do {
-                                try {
+                                try { //Mostrando opciones para que el usuario elija de que manera quiere recorrer el arbol
                                     System.out.println("\n\t<> Elija una opcion para recorrer el arbol <>");
                                     System.out.println("\n1. Inorden");
                                     System.out.println("2. Preorden");
@@ -275,7 +277,7 @@ public class arbolBinario {
 
                                 switch (optionre) {
 
-                                    case 1:
+                                    case 1: //Recorriendo el arbol INORDEN
                                         System.out.println("\nRecorrido InOrden");
                                         if (arbol.raiz != null) {
                                             arbol.inorden();
@@ -287,7 +289,7 @@ public class arbolBinario {
 
                                         break;
 
-                                    case 2:
+                                    case 2://Recorriendo el arbol PREORDEN
                                         System.out.println("\nRecorrido Preorden");
                                         if (arbol.raiz != null) {
                                             arbol.preorden();
@@ -298,7 +300,7 @@ public class arbolBinario {
                                         }
                                         break;
 
-                                    case 3:
+                                    case 3://Recorriendo el arbol POSTORDEN
                                         System.out.println("\nRecorrido PostOrden");
                                         if (arbol.raiz != null) {
                                             arbol.postorden();
@@ -322,6 +324,7 @@ public class arbolBinario {
                         break;
 
                     case 6:
+                        //Buscando un dato en especifico del arbol.
                         System.out.print("\nIngresa el valor que busca: ");
                         int valorbus = scanner.nextInt();
                         if(arbol.buscar(valorbus)){
